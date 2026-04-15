@@ -3,6 +3,9 @@ import { StyleSheet, Text, View } from "react-native";
 import FirstComp from "./src/Components/FirstComp";
 import { useState } from "react";
 import Login from "./src/Screens/Login";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { NavigationContainer } from "@react-navigation/native";
+import Home from "./src/Screens/Home";
 
 export default function App() {
   const name = "Firas";
@@ -11,13 +14,29 @@ export default function App() {
     setTest(data);
     console.log(test);
   };
+  const BTab = createBottomTabNavigator();
   return (
-    <View style={styles.container}>
+    <>
       {/* <Text style={{ color: "red", fontSize: 24 }}>Hello, {test} </Text>
       <FirstComp name={name} getData={getData} />
       <StatusBar style="auto" /> */}
-      <Login />
-    </View>
+      {/* <Login /> */}
+      <NavigationContainer>
+        <BTab.Navigator
+          screenOptions={{
+            headerShown: false,
+            tabBarLabelStyle: {
+              fontSize: 16,
+              fontFamily: "Georgia",
+              fontWeight: 300,
+            },
+          }}
+        >
+          <BTab.Screen name="Login" component={Login} />
+          <BTab.Screen name="Home" component={Home} />
+        </BTab.Navigator>
+      </NavigationContainer>
+    </>
   );
 }
 
