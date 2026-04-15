@@ -7,6 +7,8 @@ import {
   View,
 } from "react-native";
 
+import axios from "axios";
+
 const Login = () => {
   const [userData, setUserData] = useState({
     email: "",
@@ -18,6 +20,17 @@ const Login = () => {
   };
 
   const loginHandler = () => {
+    axios
+      .post("http://10.33.4.23:1122/signin", {
+        email: userData.email,
+        password: userData.password,
+      })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
     console.log(userData);
     setUserData({
       email: "",
