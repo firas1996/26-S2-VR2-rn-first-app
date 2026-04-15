@@ -31,6 +31,14 @@ const Login = () => {
       .catch((e) => {
         console.log(e);
       });
+    // axios
+    //   .get("http://10.33.4.23:1122/users")
+    //   .then((res) => {
+    //     console.log(res.data.data.users);
+    //   })
+    //   .catch((e) => {
+    //     console.log(e);
+    //   });
     console.log(userData);
     setUserData({
       email: "",
