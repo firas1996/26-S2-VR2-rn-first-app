@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -7,6 +8,22 @@ import {
 } from "react-native";
 
 const Login = () => {
+  const [userData, setUserData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const inputChangeHandler = (txt, name) => {
+    setUserData({ ...userData, [name]: txt });
+  };
+
+  const loginHandler = () => {
+    console.log(userData);
+    setUserData({
+      email: "",
+      password: "",
+    });
+  };
   return (
     <View style={styles.container}>
       <Text style={{ fontSize: 24, fontWeight: "bold", marginBottom: 12 }}>
@@ -15,14 +32,26 @@ const Login = () => {
       <View style={styles.card}>
         <View style={styles.inpV}>
           <Text style={styles.inpT}>Email</Text>
-          <TextInput style={styles.inpI} />
+          <TextInput
+            style={styles.inpI}
+            onChangeText={(txt) => {
+              inputChangeHandler(txt, "email");
+            }}
+            value={userData.email}
+          />
         </View>
         <View style={styles.inpV}>
           <Text style={styles.inpT}>Password</Text>
-          <TextInput style={styles.inpI} />
+          <TextInput
+            style={styles.inpI}
+            onChangeText={(txt) => {
+              inputChangeHandler(txt, "password");
+            }}
+            value={userData.password}
+          />
         </View>
         <View>
-          <TouchableOpacity style={styles.btn}>
+          <TouchableOpacity style={styles.btn} onPress={loginHandler}>
             <Text style={styles.btnT}>Login</Text>
           </TouchableOpacity>
         </View>
