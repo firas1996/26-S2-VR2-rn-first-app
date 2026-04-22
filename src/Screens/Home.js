@@ -1,8 +1,16 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import React from "react";
-import { TextInput } from "react-native-gesture-handler";
+import {
+  FlatList,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import React, { useState } from "react";
+import Item from "../Components/Item";
 
 const Home = () => {
+  const [items, setItems] = useState([1, 2, 3, 4]);
   return (
     <View style={styles.container}>
       <View style={styles.vInp}>
@@ -11,7 +19,14 @@ const Home = () => {
           <Text style={styles.btnTxT}>Add</Text>
         </TouchableOpacity>
       </View>
-      <View style={styles.vItems}></View>
+      <View style={styles.vItems}>
+        <FlatList
+          data={items}
+          renderItem={() => {
+            return <Item />;
+          }}
+        />
+      </View>
     </View>
   );
 };
@@ -40,6 +55,7 @@ const styles = StyleSheet.create({
     width: "100%",
     marginBottom: 20,
     alignItems: "flex-start",
+    paddingHorizontal: 10,
   },
   inp: {
     borderWidth: 1,
