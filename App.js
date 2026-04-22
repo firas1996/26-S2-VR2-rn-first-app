@@ -6,6 +6,7 @@ import Login from "./src/Screens/Login";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import Home from "./src/Screens/Home";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 
 export default function App() {
   const name = "Firas";
@@ -15,6 +16,7 @@ export default function App() {
     console.log(test);
   };
   const BTab = createBottomTabNavigator();
+  const Drower = createDrawerNavigator();
   return (
     <>
       {/* <Text style={{ color: "red", fontSize: 24 }}>Hello, {test} </Text>
