@@ -8,12 +8,15 @@ import {
 } from "react-native";
 
 import axios from "axios";
+import { useNavigation } from "@react-navigation/native";
 
 const Login = () => {
   const [userData, setUserData] = useState({
-    email: "",
-    password: "",
+    email: "testapi1@gmail.com",
+    password: "user1234",
   });
+
+  const navigation = useNavigation();
 
   const inputChangeHandler = (txt, name) => {
     setUserData({ ...userData, [name]: txt });
@@ -21,12 +24,13 @@ const Login = () => {
 
   const loginHandler = () => {
     axios
-      .post("http://10.33.4.23:1122/signin", {
+      .post("http://10.33.4.12:1122/signin", {
         email: userData.email,
         password: userData.password,
       })
       .then((res) => {
         console.log(res.data);
+        navigation.navigate("Home");
       })
       .catch((e) => {
         console.log(e);

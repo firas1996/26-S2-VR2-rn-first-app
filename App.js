@@ -16,7 +16,7 @@ export default function App() {
     console.log(test);
   };
   const BTab = createBottomTabNavigator();
-  const Drower = createDrawerNavigator();
+  const Drawer = createDrawerNavigator();
   return (
     <>
       {/* <Text style={{ color: "red", fontSize: 24 }}>Hello, {test} </Text>
@@ -24,7 +24,7 @@ export default function App() {
       <StatusBar style="auto" /> */}
       {/* <Login /> */}
       <NavigationContainer>
-        <BTab.Navigator
+        <Drawer.Navigator
           screenOptions={{
             headerShown: false,
             tabBarLabelStyle: {
@@ -34,9 +34,9 @@ export default function App() {
             },
           }}
         >
-          <BTab.Screen name="Login" component={Login} />
-          <BTab.Screen name="Home" component={Home} />
-        </BTab.Navigator>
+          <Drawer.Screen name="Login" component={Login} />
+          <Drawer.Screen name="Home" component={Home} />
+        </Drawer.Navigator>
       </NavigationContainer>
     </>
   );
