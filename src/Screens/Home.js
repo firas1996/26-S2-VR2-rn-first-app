@@ -21,6 +21,16 @@ const Home = () => {
       setItemData({ title: "" });
     }
   };
+  const editFavItem = (id) => {
+    setItems(
+      items.map((element) => {
+        return element.id === id
+          ? { ...element, isFav: !element.isFav }
+          : element;
+      }),
+    );
+  };
+  console.log(items);
   return (
     <View style={styles.container}>
       <View style={styles.vInp}>
@@ -37,7 +47,7 @@ const Home = () => {
         <FlatList
           data={items}
           renderItem={(data) => {
-            return <Item data={data.item} />;
+            return <Item data={data.item} editFavItem={editFavItem} />;
           }}
         />
       </View>

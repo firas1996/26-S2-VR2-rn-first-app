@@ -1,14 +1,24 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
-const Item = ({ data }) => {
+const Item = ({ data, editFavItem }) => {
   console.log(data);
   return (
-    <View style={styles.item}>
-      <Text style={styles.txt}>{data.title}</Text>
-      <Ionicons name="heart-outline" size={24} color="white" />
-    </View>
+    <TouchableOpacity
+      onPress={() => {
+        editFavItem(data.id);
+      }}
+    >
+      <View style={styles.item}>
+        <Text style={styles.txt}>{data.title}</Text>
+        <Ionicons
+          name={data.isFav ? "heart" : "heart-outline"}
+          size={32}
+          color={data.isFav ? "red" : "white"}
+        />
+      </View>
+    </TouchableOpacity>
   );
 };
 
