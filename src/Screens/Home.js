@@ -10,20 +10,34 @@ import React, { useState } from "react";
 import Item from "../Components/Item";
 
 const Home = () => {
-  const [items, setItems] = useState([1, 2, 3, 4]);
+  const [items, setItems] = useState([]);
+  const [itemData, setItemData] = useState({ id: 0, title: "", isFav: false });
+  const inputChangeHandler = (txt) => {
+    setItemData({ id: Math.random(), title: txt, isFav: false });
+  };
+  const addItem = () => {
+    if (itemData.title.trim().length) {
+      setItems([...items, itemData]);
+      setItemData({ title: "" });
+    }
+  };
   return (
     <View style={styles.container}>
       <View style={styles.vInp}>
-        <TextInput style={styles.inp} />
-        <TouchableOpacity style={styles.btn}>
+        <TextInput
+          style={styles.inp}
+          onChangeText={inputChangeHandler}
+          value={itemData.title}
+        />
+        <TouchableOpacity style={styles.btn} onPress={addItem}>
           <Text style={styles.btnTxT}>Add</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.vItems}>
         <FlatList
           data={items}
-          renderItem={() => {
-            return <Item />;
+          renderItem={(data) => {
+            return <Item data={data.item} />;
           }}
         />
       </View>

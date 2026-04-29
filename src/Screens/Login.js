@@ -24,7 +24,7 @@ const Login = () => {
 
   const loginHandler = () => {
     axios
-      .post("http://10.33.4.12:1122/signin", {
+      .post("http://172.20.10.3:1122/signin", {
         email: userData.email,
         password: userData.password,
       })

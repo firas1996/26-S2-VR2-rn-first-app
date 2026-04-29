@@ -2,10 +2,11 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
-const Item = () => {
+const Item = ({ data }) => {
+  console.log(data);
   return (
     <View style={styles.item}>
-      <Text style={styles.txt}>Item</Text>
+      <Text style={styles.txt}>{data.title}</Text>
       <Ionicons name="heart-outline" size={24} color="white" />
     </View>
   );
